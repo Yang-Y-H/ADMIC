@@ -1,10 +1,17 @@
+rm(list = ls())
+library(stats)
+library(glasso)
+
+source("ADMIC_fun.R")
+source("bonobo.precision_fun.R")
+source("reference.select_fun.R")
 # -----------------------------------
 #  Loading data
 # -----------------------------------
-data <- read.csv("D:/YYH/Github_project/ADMIC/data/data_count.csv", row.names = 1)
+data <- read.csv("data/data_count.csv", row.names = 1)
 data <- as.matrix(data)
 
-meta <- read.csv("D:/YYH/Github_project/ADMIC/data/data_meta.csv", row.names = 1)
+meta <- read.csv("data/data_meta.csv", row.names = 1)
 meta$Phenotype <- factor(meta$Phenotype)
 meta$Gender <- factor(meta$Gender)
 meta$Population <- factor(meta$Population)

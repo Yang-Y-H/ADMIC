@@ -3,13 +3,14 @@
 **ADMIC** is a novel method for microbiome differential abundance analysis that explicitly incorporates microbial interactions into the modeling framework. Traditional differential analysis methods typically model microbes independently, neglecting the critical impact of these microbial interactions.
 To address this limitation, we established **ADMIC-Basic**, a high-performance and highly flexible baseline model. Building upon this foundation, ADMIC integrates microbial interaction terms as confounders. By incorporating interaction terms, ADMIC filters out secondary differential microbes whose abundance differences are driven by microbial interactions, thereby enhancing the capability to identify primary differential microbes directly associated with the disease.
 
+## 📥 How to Download & Run
 
-```r
-# To use ADMIC, you need to load the following R packages
-install.packages("stats", "glasso")
-library(stats)
-library(glasso)
-```
+* **For non-Git users**: Click the green **`Code`** button at the top right, select **`Download ZIP`**, and extract it to your computer.
+* **For Git users**: Clone this repository using your terminal:
+  ```bash
+  git clone https://github.com/Yang-Y-H/ADMIC.git
+  ```
+
 
 ## 📊 Example Data
 
@@ -18,7 +19,15 @@ We provide a toy **case-control dataset** for you to test the package. You can f
 * 📊 [`data/count_table.csv`](./data/data_count.csv) — Microbial abundance count table (rows as samples, columns as OTUs/taxa).
 * 📋 [`data/metadata.csv`](./data/data_meta.csv) — Sample metadata (including case-control status and other covariates).
 
+```r
+# To use ADMIC, you need to load the following R packages
+install.packages("stats", "glasso")
+library(stats)
+library(glasso)
+```
+
 Before running this script, please make sure you have double-clicked `ADMIC.Rproj` in the folder to open it, or that you have manually set the working directory to the current folder.
+
 ```r
 source("ADMIC_fun.R")
 source("bonobo.precision_fun.R")

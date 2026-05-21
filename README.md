@@ -1,7 +1,7 @@
 # ADMIC
 
 **ADMIC** is a novel method for microbiome differential abundance analysis that explicitly incorporates microbial interactions into the modeling framework. Traditional differential analysis methods typically model microbes independently, neglecting the critical impact of these microbial interactions.
-To address this limitation, we established ADMIC-Basic, a high-performance and highly flexible baseline model. Building upon this foundation, ADMIC integrates microbial interaction terms as confounders. By incorporating interaction terms, ADMIC filters out secondary differential microbes whose abundance differences are driven by microbial interactions, thereby enhancing the capability to identify primary differential microbes directly associated with the disease.
+To address this limitation, we established **ADMIC-Basic**, a high-performance and highly flexible baseline model. Building upon this foundation, ADMIC integrates microbial interaction terms as confounders. By incorporating interaction terms, ADMIC filters out secondary differential microbes whose abundance differences are driven by microbial interactions, thereby enhancing the capability to identify primary differential microbes directly associated with the disease.
 
 
 ```r

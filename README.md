@@ -18,6 +18,7 @@ We provide a toy **case-control dataset** for you to test the package. You can f
 * 📊 [`data/count_table.csv`](./data/data_count.csv) — Microbial abundance count table (rows as samples, columns as OTUs/taxa).
 * 📋 [`data/metadata.csv`](./data/data_meta.csv) — Sample metadata (including case-control status and other covariates).
 
+Before running this script, please make sure you have double-clicked `ADMIC.Rproj` in the folder to open it, or that you have manually set the working directory to the current folder.
 ```r
 source("ADMIC_fun.R")
 source("bonobo.precision_fun.R")

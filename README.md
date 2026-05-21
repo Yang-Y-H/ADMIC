@@ -19,12 +19,15 @@ We provide a toy **case-control dataset** for you to test the package. You can f
 * 📋 [`data/metadata.csv`](./data/data_meta.csv) — Sample metadata (including case-control status and other covariates).
 
 ```r
+source("ADMIC_fun.R")
+source("bonobo.precision_fun.R")
+source("reference.select_fun.R")
 # -----------------------------------
 #  Loading data
 # -----------------------------------
-data <- read.csv(".../ADMIC/data/data_count.csv", row.names = 1)
+data <- read.csv("data/data_count.csv", row.names = 1)
 data <- as.matrix(data)
-meta <- read.csv(".../ADMIC/data/data_meta.csv", row.names = 1)
+meta <- read.csv("data/data_meta.csv", row.names = 1)
 meta$Phenotype <- factor(meta$Phenotype)
 meta$Gender <- factor(meta$Gender)
 meta$Population <- factor(meta$Population)

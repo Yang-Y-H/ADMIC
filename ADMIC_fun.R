@@ -4,7 +4,7 @@ library(glasso)
 # Y is a vector of trait
 # C is a matrix of confounders. The default is NULL.
 # c is the L1 regularization penalty parameter used to control the precision matrix, it determines the sparsity of the precision matrix. 
-# c=2: The network is extremely sparse, with no erroneous edges. c=1: Theoretical equilibrium point. c=0.5: Allows for some noise, resulting in a denser network. The default value is 1.
+#    c=2: The network is extremely sparse, with no erroneous edges. c=1: Theoretical equilibrium point. c=0.5: Allows for some noise, resulting in a denser network. The default value is 1.
 # pseudo.count is the non-zero pseudo-count used to replace 0; it is recommended to use values such as 0.5 or 1. The default is 1.
 # r.test is the parameter range for the Box-Cox transformation (must be set between 0 and 1); the default range is 0.1 to 0.9, with a step size of 0.1.
 
@@ -47,7 +47,8 @@ ADMIC <- function(data, Y, C = NULL,
   geo.mean <- apply(data[,ref], 1, mean)
   trans.data.raw <- data/geo.mean
   rho <- c*sqrt(log(n.tax)/n.sam)
-  Precision.mat <- bonobo.precision(t(data),rho = rho)
+  Precision.mat <- bonobo.precision(t(data), rho = rho)
+  
   # step 3 --- main test model
   n <- length(r.test)
   AIC0 <- numeric(n)

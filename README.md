@@ -3,7 +3,7 @@
 **ADMIC** is a novel method for microbiome differential abundance analysis that explicitly incorporates microbial interactions into the modeling framework. Traditional differential analysis methods typically model microbes independently, neglecting the critical impact of these microbial interactions.
 To address this limitation, we established **ADMIC-Basic**, a high-performance and highly flexible baseline model. Building upon this foundation, ADMIC integrates microbial interaction terms as confounders. By incorporating interaction terms, ADMIC filters out secondary differential microbes whose abundance differences are driven by microbial interactions, thereby enhancing the capability to identify primary differential microbes directly associated with the disease.
 
-## 📥 How to Download & Run
+## How to Download & Run
 
 * **For non-Git users**: Click the green **`Code`** button at the top right, select **`Download ZIP`**, and extract it to your computer.
 * **For Git users**: Clone this repository using your terminal:
@@ -12,7 +12,7 @@ To address this limitation, we established **ADMIC-Basic**, a high-performance a
   ```
 
 
-## 📊 Example Data
+## Example Data
 
 We provide a toy **case-control dataset** for you to test the package. You can find and download the files directly from the `data/` directory:
 
@@ -62,3 +62,12 @@ C <- meta[, colnames(meta) != "Phenotype"]
 RES <- ADMIC(data.filter,Y,C)
 RES.noC <- ADMIC(data.filter,Y,C = NULL)
 ```
+
+## Output value
+* **feature**: All feature names input into the model after filtering (prevalence >= 5%).
+* **p.basic**: p-values obtained using the ADMIC-Basic model.
+* **q.basic**: q-values (adjusted p-values by the BH procedure) obtained using the ADMIC-Basic model.
+* **r.basic**: The BOX-COX transformation parameter ρ in ADMIC-Basic model determined using the Jacobian Adjusted AIC.
+* **p.admic**: p-values obtained using the ADMIC model.
+* **q.admic**: q-values (adjusted p-values by the BH procedure) obtained using the ADMIC model.
+* **r.admic**: The BOX-COX transformation parameter ρ in ADMIC model determined using the Jacobian Adjusted AIC.

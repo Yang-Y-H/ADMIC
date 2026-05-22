@@ -1,7 +1,7 @@
 # DATA is an abundance matrix where the rows correspond to taxa and the columns correspond to samples. 
 # rho is (Non-negative) regularization parameter for lasso. The default is 0.1.
 library(glasso)
-bonobo.precision <- function(DATA, rho = 0.1){
+bonobo.precision <- function(DATA, rho){
   n.sample <- ncol(DATA)
   g <- nrow(DATA)
   DATA[which(DATA == 0)] <- 1

@@ -1,13 +1,15 @@
 library(stats)
+library(glasso)
 # data is an abundance matrix where the rows correspond to samples and the columns correspond to taxa. 
 # Y is a vector of trait
 # C is a matrix of confounders. The default is NULL.
-# rho is (Non-negative) regularization parameter for lasso. The default is 0.1.
+# c is the L1 regularization penalty parameter used to control the precision matrix, it determines the sparsity of the precision matrix. 
+# c=2: The network is extremely sparse, with no erroneous edges. c=1: Theoretical equilibrium point. c=0.5: Allows for some noise, resulting in a denser network. The default value is 1.
 # pseudo.count is the non-zero pseudo-count used to replace 0; it is recommended to use values such as 0.5 or 1. The default is 1.
 # r.test is the parameter range for the Box-Cox transformation (must be set between 0 and 1); the default range is 0.1 to 0.9, with a step size of 0.1.
 
 ADMIC <- function(data, Y, C = NULL, 
-                  rho = 0.1, pseudo.count = 1, 
+                  pseudo.count = 1, c = 1,
                   r.test = seq(from = 0.1, to = 0.9, by = 0.1)){
   
   if (!is.numeric(data)) {
@@ -44,8 +46,8 @@ ADMIC <- function(data, Y, C = NULL,
   # step 2 --- precision matrix 
   geo.mean <- apply(data[,ref], 1, mean)
   trans.data.raw <- data/geo.mean
+  rho <- c*sqrt(log(n.tax)/n.sam)
   Precision.mat <- bonobo.precision(t(data),rho = rho)
-  
   # step 3 --- main test model
   n <- length(r.test)
   AIC0 <- numeric(n)
@@ -106,6 +108,7 @@ ADMIC <- function(data, Y, C = NULL,
               p.admic = p.eff, q.admic = q.eff, r.admic = r.test[maxrho.eff])
   return(res)
 }
+
 
 
 
